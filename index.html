@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Startup 3 — Combined Page</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            background: #1b0b61;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        section {
+            width: 100%;
+            padding: 80px 60px;
+        }
+
+        .navbar {
+            position: absolute;
+            top: 30px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .navbar nav {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .logo a {
+            color: #fff;
+            font-size: 20px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo a:hover {
+            color: #ff5fa2;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 35px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar ul li:first-child a {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .navbar ul li a:hover {
+            color: #fff;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(to top,
+                    rgba(100, 72, 240, 0.55),
+                    rgba(92, 21, 155, 0.55)),
+                url("index.jpg") no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 700px;
+            z-index: 1;
+        }
+
+        .small-title {
+            font-size: 16px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 54px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 0px;
+        }
+
+        .description {
+            font-size: 16px;
+            font-weight: 400;
+            max-width: 500px;
+            line-height: 28px;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .hero cta-btn {
+            background-color: #2b098a;
+            border: none;
+            padding: 15px 36px;
+            border-radius: 30px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .hero cta-btn:hover {
+            background: #3a0bcc;
+        }
+
+        /* Dots */
+        .dots {
+            margin-bottom: 25px;
+        }
+
+        .dot {
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            background: white;
+            border-radius: 50%;
+            display: inline-block;
+            opacity: 0.4;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .dot.active {
+            opacity: 1;
+        }
+
+        /* Right Arrow */
+        .arrow-right {
+            position: absolute;
+            right: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 30px;
+            cursor: pointer;
+            color: #fff;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+            user-select: none;
+        }
+
+        .arrow-right:hover {
+            opacity: 1;
+        }
+
+
+        /* ===== CONTENT SECTION ===== */
+        .content {
+            height: 100vh;
+            background: linear-gradient(to top, rgba(73, 30, 126, 0.6)),
+                url("content.jpg") no-repeat center center / cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .content-box {
+            max-width: 800px;
+        }
+
+        .small-title {
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .content h1 {
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .description {
+            font-size: 16px;
+            line-height: 1.6;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ===== FEATURES SECTION ===== */
+        .features-section {
+            background: linear-gradient(to top,
+                    rgba(42, 31, 95, 0.6)),
+                url("desert.jpg") no-repeat center center/cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0;
+            position: relative;
+
+        }
+
+        .features-container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .features-left {
+            flex: 1;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .features-left img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            margin-left: 0;
+            display: block;
+        }
+
+        .features-right {
+            flex: 1;
+            padding-left: 30px;
+            max-width: 600px;
+            position: relative;
+            left: -300px;
+        }
+
+        .features-right h3 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .features-right p {
+            font-size: 22px;
+            margin-bottom: 40px;
+            font-weight: 400;
+            line-height: 32px;
+            letter-spacing: 0px;
+            color: #fff;
+        }
+
+        .feature-items {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .feature-item {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .feature-item i {
+            font-size: 32px;
+            width: 100px;
+            margin-bottom: 12px;
+            color: #fff;
+            display: block;
+        }
+
+        .feature-item h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            width: 200px;
+            color: #fff;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-item:hover i {
+            color: #00c6ff;
+        }
+
+        .dots-nav {
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .dots-nav span {
+            width: 10px;
+            height: 10px;
+            border: 2px solid white;
+            border-radius: 50%;
+            display: block;
+            opacity: 0.6;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dots-nav span.active,
+        .dots-nav span:hover {
+            background: white;
+            opacity: 1;
+        }
+
+        /* ===== FORM SECTION ===== */
+        .form-section {
+            background: linear-gradient(to top,
+                    rgba(31, 11, 136, 0.6)),
+                url("content.jpg") no-repeat center center / cover;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 60px;
+            min-height: 100vh;
+        }
+
+        .form-container {
+            display: flex;
+            max-width: 1100px;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .form-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .form-text h1 {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 52px;
+            max-width: 400px;
+            letter-spacing: -0.4px;
+            color: #fff;
+        }
+
+        .form-text p {
+            font-size: 16px;
+            line-height: 26px;
+            margin-top: 15px;
+            max-width: 350px;
+            color: #fff;
+        }
+
+        .form-card {
+            flex: 1;
+            background: #fff;
+            color: #333;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            height: 450px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .tab.active {
+            color: #000;
+            border-bottom: 2px solid #4e0eff;
+        }
+
+        .form-card form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-card input {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .btn {
+            padding: 12px;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            .btn-primary {
+                background-color: #189389;
+                /* replace pink */
+                border: none;
+                color: #fff;
+            }
+
+            .btn-primary:hover {
+                background-color: #1f1277;
+            }
+
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        .btn-twitter {
+            background: #1da1f2;
+        }
+
+        .btn-twitter:hover {
+            opacity: 0.9;
+        }
+
+        .divider {
+            text-align: center;
+            font-size: 12px;
+            color: #aaa;
+            margin: 10px 0;
+        }
+
+        @media (max-width: 900px) {
+            .features-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .features-left img {
+                margin-bottom: 30px;
+                max-width: 90%;
+            }
+
+            .feature-items {
+                justify-content: center;
+            }
+
+            .dots-nav {
+                right: 10px;
+            }
+
+            .form-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .form-text {
+                padding: 0;
+                margin-bottom: 30px;
+            }
+        }
+
+        /* ===== TESTIMONIALS SECTION ===== */
+        .testimonials {
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+            flex: 1;
+            padding: 80px 60px;
+        }
+
+        .testimonials h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 470px);
+            grid-template-rows: repeat(2, 237px);
+            gap: 30px;
+            justify-content: left;
+        }
+
+        .testimonial-card {
+            width: 470px;
+            height: 237px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: stretch;
+            gap: 20px;
+        }
+
+        .testimonial-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 6px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .testimonial-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            flex: 1;
+        }
+
+        .testimonial-content p {
+            font-size: 15px;
+            line-height: 22px;
+            color: #ddd;
+            margin-bottom: auto;
+        }
+
+        .testimonial-content h4 {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #aaa;
+            letter-spacing: 1px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 1000px) {
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+
+            .testimonial-card {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        /* ===== CALL TO ACTION SECTION ===== */
+        .cta-section {
+            height: 100vh;
+            background: linear-gradient(to top, rgba(79, 62, 179, 0.6)),
+                url("call_to_action.jpg") no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .cta-content {
+            max-width: 700px;
+        }
+
+        .cta-content h1 {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        .cta-content p {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 400px;
+            color: #ddd;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Buttons */
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .play-btn {
+            background: #EA3223;
+            border: none;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .play-btn span {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 15px solid white;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            margin-left: 3px;
+        }
+
+        .cta-btn {
+            background: #00C9A7;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 30px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .cta-btn:hover {
+            background: #009e86;
+        }
+
+        @media (max-width: 768px) {
+            .cta-content h1 {
+                font-size: 32px;
+            }
+
+            .cta-content p {
+                font-size: 16px;
+            }
+        }
+
+        /* ===== SHOWCASE SECTION ===== */
+        .showcase {
+            background: #2F1893;
+            color: white;
+            padding: 80px 50px;
+            min-height: 100vh;
+        }
+
+        .showcase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .showcase-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .showcase-header .view-btn {
+            background: transparent;
+            border: 1px solid #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .showcase-header .view-btn:hover {
+            background: white;
+            color: #2F1893;
+        }
+
+        /* Works Grid */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .work-card {
+            background: #2F1893;
+            border-radius: 12px;
+            overflow: hidden;
+            text-align: center;
+            color: #fff;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .work-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .work-card img {
+            width: 470px;
+            height: 371px;
+            border-radius: 10px;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .work-info {
+            padding: 15px;
+        }
+
+        .work-info span {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            margin-bottom: 8px;
+        }
+
+        .work-info h3 {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .works-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== TEAM SECTION ===== */
+        .team-section {
+            background: #2F1893;
+            color: white;
+            padding: 80px 60px;
+            text-align: left;
+        }
+
+        .team-section h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .team-section p {
+            font-size: 16px;
+            line-height: 26px;
+            color: #ddd;
+            margin-bottom: 50px;
+            max-width: 700px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            justify-items: center;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .team-member h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .team-member span {
+            font-size: 14px;
+            color: #aaa;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        /* Social Icons */
+        .team-member .social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .team-member .social a {
+            color: #fff;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .team-member .social a:hover {
+            color: #00d4ff;
+        }
+
+        @media (max-width: 768px) {
+            .team-section {
+                text-align: center;
+                padding: 60px 30px;
+            }
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact-section {
+            background: linear-gradient(to top, rgba(60, 51, 116, 0.6)), url("contact.jpg") no-repeat center center/cover;
+            color: #fff;
+            padding: 80px 60px;
+        }
+
+        .contact-container {
+            display: flex;
+            max-width: 800px;
+            margin: 40px auto;
+            gap: 50px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .contact-left {
+            flex: 1;
+        }
+
+        .contact-left h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-left p {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ccc;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .contact-info i {
+            color: #00c6ff;
+            font-size: 18px;
+        }
+
+        .contact-right {
+            flex: 1;
+            background: #fff;
+            color: #333;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            min-width: 350px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+            color: #555;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border 0.3s ease;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #00c6ff;
+        }
+
+        textarea {
+            border-radius: 12px;
+            resize: none;
+            min-height: 100px;
+        }
+
+        .inline-fields {
+            display: flex;
+            gap: 15px;
+        }
+
+        .checkbox-send {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .checkbox-group input {
+            width: auto;
+        }
+
+        .send-btn {
+            background: #00c6ff;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .send-btn:hover {
+            background: #009ad9;
+        }
+
+        @media (max-width: 900px) {
+            .contact-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-right {
+                text-align: left;
+            }
+
+            .checkbox-send {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+
+
+        /* ===== PLANS & PRICING ===== */
+        .pricing {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(to top, rgba(51, 48, 247, 0.5)), url('plans&pricing.jpg') no-repeat center center/cover;
+            color: #fff;
+        }
+
+        .pricing h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .pricing p {
+            margin-bottom: 50px;
+            font-size: 1rem;
+            color: #ddd;
+        }
+
+        .pricing-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 30px 20px;
+            width: 280px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .features li {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .features li.included i {
+            color: #00ff88;
+        }
+
+        .features li.excluded {
+            color: rgba(255, 255, 255, 0.6);
+            padding-left: 26px;
+            font-style: italic;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .btn-default {
+            border: 2px solid #fff;
+            color: #fff;
+        }
+
+        .btn-default:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .btn-primary {
+            background: #ff0077;
+            border: none;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #e6006c;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #2a1f9c;
+            color: #fff;
+            padding: 20px 50px;
+            font-size: 0.9rem;
+        }
+
+        .footer-top,
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-top h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .footer-right i {
+            margin-left: 15px;
+            cursor: pointer;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            margin: 15px 0;
+        }
+
+        .footer-copy {
+            color: #ccc;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 900px) {
+            .features-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .features-left img {
+                margin-bottom: 30px;
+                max-width: 90%;
+            }
+
+            .feature-items {
+                justify-content: center;
+            }
+
+            .footer-top,
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="navbar">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="feature.html">Features</a></li>
+                    <li><a href="plans_&_pricing.html">Pricing</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
+                    <li><a href="#"><i class="fab fa-behance"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="hero-content">
+            <p class="small-title">Startup 3</p>
+            <h1>Forget About Code</h1>
+            <p class="description">
+                Startup Framework gives you complete freedom over your creative
+                process — you don’t have to think about any technical aspects.
+                There are no limits and absolutely no coding.
+            </p>
+
+            <div class="dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+
+            <button class="cta-btn">Create an Account</button>
+        </div>
+
+        <div class="arrow-right">&gt;</div>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="content">
+        <div class="content-box">
+            <p class="small-title">FREE SAMPLE</p>
+            <h1>Powerful Generator and Free <br />Figma Sources</h1>
+            <p class="description">
+                Startup Framework contains components and complex blocks which can easily be
+                integrated into almost any design. All of the components are made in the same style,
+                and can easily be integrated into projects, allowing you to create hundreds of solutions.
+            </p>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features-section">
+        <div class="features-container">
+            <div class="features-left">
+                <img src="feature_laptop.png" alt="Laptop" />
+            </div>
+            <div class="features-right">
+                <h3>We Create Something New</h3>
+                <p>We have created a new product that will help designers, developers, and companies create websites for
+                    their startups quickly and easily.</p>
+                <div class="feature-items">
+                    <div class="feature-item">
+                        <i class="fa-regular fa-clone"></i>
+                        <h3>30 NEW FEATURE PAGES</h3>
+                        <p>Startup Framework contains components and complex blocks which can easily.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-regular fa-gem"></i>
+                        <h3>USEFUL SYMBOL COMPONENTS</h3>
+                        <p>Samples will show you the feeling on how to play around using the components.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dots-nav">
+            <span class="active"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </section>
+    <!-- FORM SECTION -->
+    <section class="form-section">
+        <div class="form-container">
+            <div class="form-text">
+                <h1>We solve digital problems with an outstanding creative flare</h1>
+                <p>
+                    We have created a new product that will help designers, developers and
+                    companies create websites for their startups quickly and easily.
+                </p>
+            </div>
+
+            <div class="form-card">
+                <div class="tabs">
+                    <div class="tab active" id="signup-tab">SIGN UP</div>
+                    <div class="tab" id="login-tab">LOGIN</div>
+                </div>
+
+                <form id="form">
+                    <input type="email" placeholder="Your email" required />
+                    <input type="password" placeholder="Your password" required />
+                    <button type="submit" class="btn btn-primary">Create an Account</button>
+                    <div class="divider">or</div>
+                    <button type="button" class="btn btn-twitter">Login via Twitter</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="testimonials">
+        <h2>Our Happy Clients</h2>
+
+        <div class="testimonial-grid">
+            <!-- Card 1 -->
+            <div class="testimonial-card">
+                <img src="Test1.jpg" alt="Rayhan Curran">
+                <div class="testimonial-content">
+                    <p>
+                        Get a fully retina ready site when you build with Startup Framework.
+                        Websites look sharper and more gorgeous on devices with retina display support.
+                    </p>
+                    <h4>Rayhan Curran</h4>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="testimonial-card">
+                <img src="Test2.jpg" alt="Kayley Frame">
+                <div class="testimonial-content">
+                    <p>
+                        As a business targeting high net worth individuals, we were looking for
+                        a slick, cool and minimalistic design for our website.
+                    </p>
+                    <h4>Kayley Frame</h4>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="testimonial-card">
+                <img src="Test3.jpg" alt="Gene Whitfield">
+                <div class="testimonial-content">
+                    <p>
+                        The most important part of the Startup Framework is the samples.
+                    </p>
+                    <h4>Gene Whitfield</h4>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="testimonial-card">
+                <img src="Test4.jpg" alt="Allan Kim">
+                <div class="testimonial-content">
+                    <p>
+                        I've built my website with Startup just in one day, and it was ready-to-go.
+                    </p>
+                    <h4>Allan Kim</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CALL TO ACTION SECTION -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h1>Easy to setup.<br>Easy to maintain</h1>
+            <p>
+                Bootstrap is a widely-used, sleek, intuitive and powerful front-end framework for faster and easier web
+                development.
+            </p>
+
+            <div class="cta-buttons">
+                <button class="play-btn">
+                    <span></span>
+                </button>
+                <button class="cta-btn">Get Started</button>
+            </div>
+        </div>
+    </section>
+    <!-- SHOWCASE SECTION -->
+    <section class="showcase">
+        <div class="showcase-header">
+            <h2>Last works</h2>
+            <button class="view-btn">View all Works</button>
+        </div>
+
+        <div class="works-grid">
+            <div class="work-card">
+                <img src="mozart.jpg" alt="Mozart Project">
+                <div class="work-info">
+                    <span>UI Kit</span>
+                    <h3>Mozart Project</h3>
+                </div>
+            </div>
+
+            <div class="work-card">
+                <img src="startup.jpg" alt="Framework">
+                <div class="work-info">
+                    <span>Framework</span>
+                    <h3>Startup Framework 2.0</h3>
+                </div>
+            </div>
+
+            <div class="work-card">
+                <img src="from_the_sky.jpg" alt="From the Sky">
+                <div class="work-info">
+                    <span>Photos</span>
+                    <h3>From the Sky</h3>
+                </div>
+            </div>
+
+            <div class="work-card">
+                <img src="AirForces.jpg" alt="Air Forces">
+                <div class="work-info">
+                    <span>Pictures</span>
+                    <h3>Air Forces</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- TEAM SECTION -->
+    <section class="team-section">
+        <h2>Startup Crew</h2>
+        <p>
+            The most important part of the Startup Framework is the samples. The samples form a set of 25 usable pages
+            you can use as is or you can add new blocks from UI Kit.
+        </p>
+
+        <!-- Team Grid -->
+        <div class="team-grid">
+            <!-- Member 1 -->
+            <div class="team-member">
+                <img src="Test1.jpg" alt="Leah Salomon">
+                <h4>Leah Salomon</h4>
+                <span>UI Designer</span>
+                <div class="social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-dribbble"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Member 2 -->
+            <div class="team-member">
+                <img src="team2.jpg" alt="Colin Timmons">
+                <h4>Colin Timmons</h4>
+                <span>UX Designer</span>
+                <div class="social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-behance"></i></a>
+                </div>
+            </div>
+
+            <!-- Member 3 -->
+            <div class="team-member">
+                <img src="team3.jpg" alt="Miguel Osborne">
+                <h4>Miguel Osborne</h4>
+                <span>Front-end Developer</span>
+                <div class="social">
+                    <a href="#"><i class="fab fa-skype"></i></a>
+                    <a href="#"><i class="fab fa-medium"></i></a>
+                    <a href="#"><i class="fab fa-git"></i></a>
+                </div>
+            </div>
+
+            <!-- Member 4 -->
+            <div class="team-member">
+                <img src="team4.jpg" alt="Taylor Simon">
+                <h4>Taylor Simon</h4>
+                <span>Product Manager</span>
+                <div class="social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Member 5 -->
+            <div class="team-member">
+                <img src="team5.jpg" alt="Steven MacAlister">
+                <h4>Steven MacAlister</h4>
+                <span>Copyrighter</span>
+                <div class="social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CONTACT SECTION -->
+    <section class="contact-section">
+        <div class="contact-container">
+            <div class="contact-left">
+                <h1>Let’s Keep in Touch</h1>
+                <p>
+                    We have created a new product that will help designers, developers and companies create websites for
+                    their startups quickly and easily.
+                </p>
+
+                <div class="contact-info"><i class="fas fa-phone"></i> +1 555 505 5050</div>
+                <div class="contact-info"><i class="fas fa-envelope"></i> info@designmodo.com</div>
+                <div class="contact-info"><i class="fas fa-building"></i> San Francisco, CA<br>
+                    560 Bush St & 20th Ave, Apt 5 San Francisco, 230909
+                </div>
+            </div>
+
+            <div class="contact-right">
+                <form>
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>YOUR NAME</label>
+                            <input type="text" placeholder="First name">
+                        </div>
+                        <div class="form-group">
+                            <label>BUDGET</label>
+                            <select>
+                                <option>$500</option>
+                                <option>$1000</option>
+                                <option>$2000</option>
+                                <option>$5000+</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>INPUT FIELD</label>
+                        <input type="email" placeholder="name@mail.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>YOUR MESSAGE</label>
+                        <textarea placeholder="Message"></textarea>
+                    </div>
+
+                    <div class="checkbox-send">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="copy">
+                            <label for="copy">Send me a copy</label>
+                        </div>
+                        <button type="submit" class="send-btn">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLANS & PRICING SECTION -->
+    <section class="pricing">
+        <h2>Plans & Pricing</h2>
+        <p>Startup Framework is free forever — you only pay for custom domain hosting or to export your site.</p>
+
+        <div class="pricing-cards">
+            <!-- Starter -->
+            <div class="card">
+                <h3>Starter</h3>
+                <div class="price">9.99<sup>$</sup></div>
+                <ul class="features">
+                    <li class="included"><i class="fas fa-check"></i> 2 GB of space</li>
+                    <li class="included"><i class="fas fa-check"></i> 14 days of backups</li>
+                    <li class="included"><i class="fas fa-check"></i> Social integrations</li>
+                    <li class="included"><i class="fas fa-check"></i> Client billing</li>
+                    <li class="excluded">Remote access</li>
+                    <li class="excluded">Custom domain</li>
+                    <li class="excluded">24 hours support</li>
+                    <li class="excluded">Admin tools</li>
+                    <li class="excluded">Collab tools</li>
+                    <li class="excluded">User management</li>
+                </ul>
+                <a href="#" class="btn btn-default">Get Started</a>
+            </div>
+
+            <!-- Professional -->
+            <div class="card">
+                <h3>Professional</h3>
+                <div class="price">19.99<sup>$</sup></div>
+                <ul class="features">
+                    <li class="included"><i class="fas fa-check"></i> 2 GB of space</li>
+                    <li class="included"><i class="fas fa-check"></i> 14 days of backups</li>
+                    <li class="included"><i class="fas fa-check"></i> Social integrations</li>
+                    <li class="included"><i class="fas fa-check"></i> Client billing</li>
+                    <li class="included"><i class="fas fa-check"></i> Remote access</li>
+                    <li class="included"><i class="fas fa-check"></i> Custom domain</li>
+                    <li class="included"><i class="fas fa-check"></i> 24 hours support</li>
+                    <li class="excluded">Admin tools</li>
+                    <li class="excluded">Collab tools</li>
+                    <li class="excluded">User management</li>
+                </ul>
+                <a href="#" class="btn btn-primary">Get Started</a>
+            </div>
+
+            <!-- Team -->
+            <div class="card">
+                <h3>Team</h3>
+                <div class="price">49.99<sup>$</sup></div>
+                <ul class="features">
+                    <li class="included"><i class="fas fa-check"></i> 2 GB of space</li>
+                    <li class="included"><i class="fas fa-check"></i> 14 days of backups</li>
+                    <li class="included"><i class="fas fa-check"></i> Social integrations</li>
+                    <li class="included"><i class="fas fa-check"></i> Client billing</li>
+                    <li class="included"><i class="fas fa-check"></i> Remote access</li>
+                    <li class="included"><i class="fas fa-check"></i> Custom domain</li>
+                    <li class="included"><i class="fas fa-check"></i> 24 hours support</li>
+                    <li class="included"><i class="fas fa-check"></i> Admin tools</li>
+                    <li class="included"><i class="fas fa-check"></i> Collaborative tools</li>
+                    <li class="included"><i class="fas fa-check"></i> User management</li>
+                </ul>
+                <a href="#" class="btn btn-default">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-left">
+                <h3>Startup 3</h3>
+            </div>
+            <div class="footer-right">
+                <span>Privacy Policy</span>
+                <span>Terms</span>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-google-plus-g"></i>
+            </div>
+        </div>
+        <hr />
+        <div class="footer-bottom">
+            <div class="footer-links">
+                <span>Tour</span>
+                <span>Features</span>
+                <span>Pricing Plans</span>
+                <span>Our Works</span>
+                <span>Brands</span>
+                <span>Contacts</span>
+            </div>
+            <div class="footer-copy">© 2017 Designmodo. All rights reserved.</div>
+        </div>
+    </footer>
+    <script>
+        const signupTab = document.getElementById("signup-tab");
+        const loginTab = document.getElementById("login-tab");
+        const form = document.getElementById("form");
+
+        signupTab.addEventListener("click", () => {
+            signupTab.classList.add("active");
+            loginTab.classList.remove("active");
+            form.querySelector("button.btn-primary").textContent = "Create an Account";
+        });
+
+        loginTab.addEventListener("click", () => {
+            loginTab.classList.add("active");
+            signupTab.classList.remove("active");
+            form.querySelector("button.btn-primary").textContent = "Login";
+        });
+    </script>
+
+</body>
+
+</html>
