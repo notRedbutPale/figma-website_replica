@@ -80,7 +80,7 @@
         .hero {
             min-height: 100vh;
             background: linear-gradient(to top,
-                    rgba(100, 72, 240, 0.55),
+                    rgba(63, 39, 182, 0.55),
                     rgba(92, 21, 155, 0.55)),
                 url("index.jpg") no-repeat center center/cover;
             display: flex;
@@ -122,19 +122,21 @@
             margin-bottom: 40px;
         }
 
-        .hero cta-btn {
-            background-color: #2b098a;
+        .cta-btn {
+            background: #4e0eff;
             border: none;
             padding: 15px 36px;
             border-radius: 30px;
             color: white;
             font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, transform 0.2s ease;
         }
 
-        .hero cta-btn:hover {
+        .cta-btn:hover {
             background: #3a0bcc;
+            transform: translateY(-2px);
         }
 
         /* Dots */
@@ -441,22 +443,25 @@
         }
 
         .btn-primary {
-            .btn-primary {
-                background-color: #189389;
-                /* replace pink */
-                border: none;
-                color: #fff;
-            }
-
-            .btn-primary:hover {
-                background-color: #1f1277;
-            }
-
+            background-color: #00C9A7;
+            /* pastel teal */
+            border: none;
+            color: #fff;
+            border-radius: 25px;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
         }
 
         .btn-primary:hover {
-            opacity: 0.9;
+            background-color: #9200b6;
+            /* slightly darker pastel */
+            transform: translateY(-2px);
         }
+
+
 
         .btn-twitter {
             background: #1da1f2;
@@ -651,7 +656,7 @@
         }
 
         .cta-btn {
-            background: #00C9A7;
+            background: #3c20a1;
             border: none;
             padding: 15px 35px;
             border-radius: 30px;
@@ -1084,15 +1089,6 @@
             color: #000;
         }
 
-        .btn-primary {
-            background: #ff0077;
-            border: none;
-            color: #fff;
-        }
-
-        .btn-primary:hover {
-            background: #e6006c;
-        }
 
         /* ===== FOOTER ===== */
         footer {
